@@ -19,10 +19,10 @@ function countdown() {
   const hours = Math.floor(totalSeconds / 3600) % 24;
   const days = Math.floor(totalSeconds / 3600 / 24);
 
-  secondsEl.innerHTML = formatTime(seconds !== NaN ? seconds : 0);
-  minutesEl.innerHTML = formatTime(minutes !== NaN ? minutes : 0);
-  hoursEl.innerHTML = formatTime(hours !== NaN ? hours : 0);
-  daysEl.innerHTML = formatTime(days !== NaN ? days : 0);
+  secondsEl.innerHTML = seconds !== NaN ? formatTime(seconds) : 0;
+  minutesEl.innerHTML = minutes !== NaN ? formatTime(minutes) : 0;
+  hoursEl.innerHTML = hours !== NaN ? formatTime(hours) : 0;
+  daysEl.innerHTML = days !== NaN ? formatTime(days) : 0;
 }
 countdown();
 
