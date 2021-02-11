@@ -19,10 +19,10 @@ function countdown() {
   const hours = Math.floor(totalSeconds / 3600) % 24;
   const days = Math.floor(totalSeconds / 3600 / 24);
 
-  secondsEl.innerHTML = seconds !== NaN ? formatTime(seconds) : 0;
-  minutesEl.innerHTML = minutes !== NaN ? formatTime(minutes) : 0;
-  hoursEl.innerHTML = hours !== NaN ? formatTime(hours) : 0;
-  daysEl.innerHTML = days !== NaN ? formatTime(days) : 0;
+  secondsEl.innerHTML = formatTime(seconds);
+  minutesEl.innerHTML = formatTime(minutes);
+  hoursEl.innerHTML = formatTime(hours);
+  daysEl.innerHTML = formatTime(days);
 }
 countdown();
 
@@ -31,9 +31,11 @@ setInterval(countdown, 1000);
 inputEl.addEventListener('change', function (e) {
   const arrayOfDates = e.target.value.split('-');
 
-  let arrDay = arrayOfDates[2];
+  let arrDay, arrMonth, arrYear, newDate;
 
-  let arrMonth = +arrayOfDates[1];
+  arrDay = arrayOfDates[2];
+
+  arrMonth = +arrayOfDates[1];
   switch (arrMonth) {
     case 1:
       arrMonth = 'Jan';
@@ -73,9 +75,9 @@ inputEl.addEventListener('change', function (e) {
       break;
   }
 
-  let arrYear = arrayOfDates[0];
+  arrYear = arrayOfDates[0];
 
-  let newDate = `${arrDay} ${arrMonth} ${arrYear}`;
+  newDate = `${arrDay} ${arrMonth} ${arrYear}`;
 
   return (countdownTime = newDate);
 });
