@@ -6,7 +6,7 @@ const inputEl = document.getElementById('input');
 
 let countdownTime = '1 Jan 2022';
 
-const formatTime = time => (time < 10 ? `0${time}` : time);
+const formatTime = time => (time < 10 && time > 0 ? `0${time}` : time);
 
 function countdown() {
   const newYearsDate = new Date(countdownTime);
@@ -19,10 +19,10 @@ function countdown() {
   const hours = Math.floor(totalSeconds / 3600) % 24;
   const days = Math.floor(totalSeconds / 3600 / 24);
 
-  secondsEl.innerHTML = formatTime(seconds);
-  minutesEl.innerHTML = formatTime(minutes);
-  hoursEl.innerHTML = formatTime(hours);
-  daysEl.innerHTML = formatTime(days);
+  secondsEl.innerHTML = formatTime(seconds !== NaN ? seconds : 0);
+  minutesEl.innerHTML = formatTime(minutes !== NaN ? minutes : 0);
+  hoursEl.innerHTML = formatTime(hours !== NaN ? hours : 0);
+  daysEl.innerHTML = formatTime(days !== NaN ? days : 0);
 }
 countdown();
 
@@ -75,5 +75,7 @@ inputEl.addEventListener('change', function (e) {
 
   let arrYear = arrayOfDates[0];
 
-  return (countdownTime = `${arrDay} ${arrMonth} ${arrYear}`);
+  let newDate = `${arrDay} ${arrMonth} ${arrYear}`;
+
+  return (countdownTime = newDate);
 });
